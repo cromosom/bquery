@@ -3,8 +3,6 @@ import { fetchData } from './actions/receiver';
 import { connect } from 'react-redux';
 import BowerList from './components/list';
 
-import './App.css';
-
 // passes store data
 function storeProps(state) {
   return {data : state.data};
