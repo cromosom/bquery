@@ -6,7 +6,9 @@ import './App.css';
 class App extends Component {
 
   get() {
-    fetchData();
+    let query = document.getElementById('queryField').value;
+
+    fetchData(query);
   }
 
   render() {
@@ -18,6 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <BowerList items={dummy} />
+        <input id="queryField" />
         <button onClick={this.get.bind(this)}>Get</button>
       </div>
     );

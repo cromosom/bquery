@@ -1,6 +1,11 @@
+import axios from 'axios';
 
-export function call () {
-  console.log('this call went well');
+export function call (query) {
 
-  return 'test';
+  return axios.get('https://libraries.io/api/bower-search', {
+    params : {
+      q : query
+    }
+  });
+
 }
