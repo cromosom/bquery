@@ -1,30 +1,40 @@
 import React, { Component } from 'react';
+import { fetchData } from './actions/receiver';
+import { connect } from 'react-redux';
 import BowerList from './components/list';
-import {fetchData} from './actions/receiver';
+
 import './App.css';
+
+// passes store data
+function storeProps(state) {
+  return {data : state.data};
+}
 
 class App extends Component {
 
-  get() {
-    let query = document.getElementById('queryField').value;
+  // handles api request
+  getData(event) {
+    event.preventDefault();
 
+    let query = document.getElementById('queryField').value;
     fetchData(query);
   }
 
   render() {
 
-    let dummy = [
-      1, 2, 3
-    ]
+    const data = this.props.data;
 
     return (
       <div className="App">
-        <BowerList items={dummy} />
-        <input id="queryField" />
-        <button onClick={this.get.bind(this)}>Get</button>
+        <form onSubmit={this.getData.bind(this)}>
+          <input id="queryField" />
+          <button type="submit">Get</button>
+        </form>
+
+        <BowerList items={data} />
       </div>
     );
   }
 }
 
-export default App;
+export default connect(storeProps)(App);

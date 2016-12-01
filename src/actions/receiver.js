@@ -1,12 +1,11 @@
 import store from '../store';
-import { call } from '../logic/call';
+import { call } from '../logic/callApi';
 
 export function fetchData (query) {
-  
+
   call(query)
     .then( (response) => {
-      console.log(response);
-      return store.dispatch({type: 'RECEIVE_DATA'});
+      return store.dispatch({type: 'RECEIVE_DATA', data: response.data});
     })
     .catch( (err) => {
       console.log(err);
