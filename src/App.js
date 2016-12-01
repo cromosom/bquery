@@ -12,6 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <BowerList items={dummy} />
+        <button>Get</button>
       </div>
     );
   }
