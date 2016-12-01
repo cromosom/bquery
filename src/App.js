@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import BowerList from './components/list';
+import {fetchData} from './actions/receiver';
 import './App.css';
 
 class App extends Component {
+
+  get() {
+    fetchData();
+  }
+
   render() {
 
     let dummy = [
@@ -12,7 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <BowerList items={dummy} />
-        <button>Get</button>
+        <button onClick={this.get.bind(this)}>Get</button>
       </div>
     );
   }
