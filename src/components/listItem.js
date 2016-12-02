@@ -1,7 +1,7 @@
 import React from 'react';
 
-const List = ({val}) => (
-  <li>{val}</li>
+const List = ({data}) => (
+  <li>{data.name}</li>
 );
 
 export default List;
