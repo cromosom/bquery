@@ -16,3 +16,7 @@ export function chunkData (dataSet) {
 
   return chunks;
 }
+
+export function sort () {
+  
+}

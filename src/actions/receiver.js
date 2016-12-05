@@ -1,6 +1,6 @@
 import store from '../store';
 import { call } from '../logic/callApi';
-import { getAuthor } from '../logic/prepareData';
+import { getAuthor } from '../logic/dataOperations';
 
 export function fetchData (query) {
 

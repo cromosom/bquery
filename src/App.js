@@ -3,7 +3,7 @@ import { fetchData } from './actions/receiver';
 import { connect } from 'react-redux';
 import BowerList from './components/list';
 import Pagination from './components/pagination';
-import { chunkData } from './logic/prepareData';
+import { chunkData } from './logic/dataOperations';
 
 // passes store data
 function storeProps(state) {
@@ -23,6 +23,10 @@ class App extends Component {
     fetchData(query);
   }
 
+  sortBy (sortParam) {
+    console.log('sort', sortParam);
+  }
+
   render() {
 
     const { data, pageIndex } = this.props;
@@ -38,7 +42,7 @@ class App extends Component {
 
         {chunkedData[pageIndex] &&
           <div>
-            <BowerList items={chunkedData} pageIndex={pageIndex} />
+            <BowerList items={chunkedData} pageIndex={pageIndex} sortBy={this.sortBy} />
             <Pagination items={chunkedData} />
           </div>
         }
