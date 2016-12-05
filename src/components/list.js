@@ -1,11 +1,10 @@
 import React from 'react';
 import ListItem from './listItem';
 
-const List = ({items}) => (
+const List = ({ items, pageIndex }) => (
   <div>
     <ul>
-    {console.log(items)}
-      {items.map((item, index) => (
+      {items[pageIndex].map((item, index) => (
         <ListItem key={index} data={item} ></ListItem>
       ))}
     </ul>
