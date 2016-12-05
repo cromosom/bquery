@@ -1,13 +1,13 @@
 import store from '../store';
 import { call } from '../logic/callApi';
-import { getAuthor, chunkData } from '../logic/prepareData';
+import { getAuthor } from '../logic/prepareData';
 
 export function fetchData (query) {
 
   call(query)
     .then( (response) => {
       let preparedData = response.data.map(getAuthor);
-      preparedData = chunkData(preparedData);
+      // preparedData = chunkData(preparedData);
 
       return store.dispatch({type: 'RECEIVE_DATA', data: preparedData});
     })

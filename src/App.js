@@ -3,6 +3,7 @@ import { fetchData } from './actions/receiver';
 import { connect } from 'react-redux';
 import BowerList from './components/list';
 import Pagination from './components/pagination';
+import { chunkData } from './logic/prepareData';
 
 // passes store data
 function storeProps(state) {
@@ -25,7 +26,9 @@ class App extends Component {
   render() {
 
     const { data, pageIndex } = this.props;
-    console.log(data, pageIndex);
+
+    let chunkedData = chunkData(data);
+
     return (
       <div className="App">
         <form onSubmit={this.getData.bind(this)}>
@@ -33,10 +36,10 @@ class App extends Component {
           <button type="submit">Get</button>
         </form>
 
-        {data[pageIndex] &&
+        {chunkedData[pageIndex] &&
           <div>
-            <BowerList items={data} pageIndex={pageIndex} />
-            <Pagination items={data} />
+            <BowerList items={chunkedData} pageIndex={pageIndex} />
+            <Pagination items={chunkedData} />
           </div>
         }
       </div>

@@ -1,7 +1,11 @@
 import React from 'react';
 
 const List = ({data}) => (
-  <li>{data.name}, {data.author}, {data.stars}</li>
+  <li>
+    <div>{data.name},</div>
+    <div>{data.author},</div>
+    <div>{data.stars}</div>
+  </li>
 );
 
 export default List;
