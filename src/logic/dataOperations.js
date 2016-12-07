@@ -56,3 +56,12 @@ export function compareStrings (field, a, b) {
 
   return 0;
 }
+
+export function filter (query, dataSet) {
+
+  let filteredData = dataSet.filter((item) => (
+    item.name.indexOf(query) !== -1
+  ))
+
+  return filteredData;
+}

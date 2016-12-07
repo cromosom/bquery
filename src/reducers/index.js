@@ -1,5 +1,6 @@
 const initialState = {
-  data: [],
+  fetchedData: [],
+  renderData: [],
   pageIndex: 0
 }
 
@@ -8,14 +9,22 @@ export default (state=initialState, action) => {
     case 'RECEIVE_DATA':
       return {
         ...state,
-        data : action.data
+        fetchedData : action.data,
+        renderData : action.data
       }
     case 'SORT_DATA':
-      let updatedData = action.sortedData.map((item) => (item));
-      
+      let sortedData = action.sortedData.map((item) => (item));
+
       return {
         ...state,
-        data : updatedData
+        renderData : sortedData
+      }
+    case 'FILTER_DATA':
+      let filteredData = action.filteredData.map((item) => (item));
+
+      return {
+        ...state,
+        renderData : filteredData
       }
     case 'SET_PAGE':
       return {

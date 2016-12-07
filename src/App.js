@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchData } from './actions/receiver';
 import { sortData } from './actions/sort';
+import { filterData } from './actions/filter';
 import { connect } from 'react-redux';
 import BowerList from './components/list';
 import Pagination from './components/pagination';
@@ -9,7 +10,8 @@ import { chunkData } from './logic/dataOperations';
 // passes store data
 function storeProps(state) {
   return {
-    data : state.data,
+    originalData : state.fetchedData,
+    data : state.renderData,
     pageIndex: state.pageIndex
   };
 }
@@ -24,23 +26,31 @@ class App extends Component {
     fetchData(query);
   }
 
+  // handles data sorting
   sortBy (sortParam, data) {
-    // console.log(data);
     sortData(data, sortParam);
+  }
+
+  searchPackage (event, data) {
+    event.preventDefault();
+
+    let query = document.getElementById('queryField').value;
+    filterData(query, data);
   }
 
   render() {
 
-    const { data, pageIndex } = this.props;
+    const { data, pageIndex, originalData } = this.props;
 
     let chunkedData = chunkData(data);
 
     return (
       <div className="App">
-        <form onSubmit={this.getData.bind(this)}>
+        <form onSubmit={(ev) => this.searchPackage(ev, originalData)}>
           <input id="queryField" />
           <button type="submit">Get</button>
         </form>
+        <button onClick={(ev) => this.getData(ev)}>Request Packages</button>
 
         {chunkedData[pageIndex] &&
           <div>

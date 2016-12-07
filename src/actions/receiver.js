@@ -7,7 +7,6 @@ export function fetchData (query) {
   call(query)
     .then( (response) => {
       let preparedData = response.data.map(getAuthor);
-      // preparedData = chunkData(preparedData);
 
       return store.dispatch({type: 'RECEIVE_DATA', data: preparedData});
     })
