@@ -1,13 +1,13 @@
 import React from 'react';
 import ListItem from './listItem';
 
-const List = ({ items, pageIndex, sortBy }) => (
+const List = ({ data, items, pageIndex, sortBy }) => (
   <div>
     <ul>
       <li>
-        <div onClick={() => sortBy(1)}>Project,</div>
-        <div onClick={() => sortBy(2)}>Owner,</div>
-        <div onClick={() => sortBy(3)}>Stars</div>
+        <div onClick={() => sortBy('name', data)}>Project,</div>
+        <div onClick={() => sortBy('author', data)}>Owner,</div>
+        <div onClick={() => sortBy('stars', data)}>Stars</div>
       </li>
       {items[pageIndex].map((item, index) => (
         <ListItem key={index} data={item} ></ListItem>

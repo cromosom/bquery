@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchData } from './actions/receiver';
+import { sortData } from './actions/sort';
 import { connect } from 'react-redux';
 import BowerList from './components/list';
 import Pagination from './components/pagination';
@@ -23,8 +24,9 @@ class App extends Component {
     fetchData(query);
   }
 
-  sortBy (sortParam) {
-    console.log('sort', sortParam);
+  sortBy (sortParam, data) {
+    // console.log(data);
+    sortData(data, sortParam);
   }
 
   render() {
@@ -42,7 +44,7 @@ class App extends Component {
 
         {chunkedData[pageIndex] &&
           <div>
-            <BowerList items={chunkedData} pageIndex={pageIndex} sortBy={this.sortBy} />
+            <BowerList data={data} items={chunkedData} pageIndex={pageIndex} sortBy={this.sortBy} />
             <Pagination items={chunkedData} />
           </div>
         }

@@ -10,6 +10,13 @@ export default (state=initialState, action) => {
         ...state,
         data : action.data
       }
+    case 'SORT_DATA':
+      let updatedData = action.sortedData.map((item) => (item));
+      
+      return {
+        ...state,
+        data : updatedData
+      }
     case 'SET_PAGE':
       return {
         ...state,

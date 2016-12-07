@@ -17,6 +17,42 @@ export function chunkData (dataSet) {
   return chunks;
 }
 
-export function sort () {
-  
+export function sort (data, field) {
+
+  let sorted;
+
+  if (field === 'name' || field === 'author') {
+    sorted = data.sort(compareStrings.bind(this, field));
+  } else {
+    sorted = data.sort(compareValues.bind(this, field));
+  }
+
+  return sorted;
+
+}
+
+export function compareValues (field, a, b) {
+  if (a[field] > b[field]) {
+    return -1;
+  }
+  if (a[field] < b[field]) {
+    return 1;
+  }
+
+  return 0;
+}
+
+export function compareStrings (field, a, b) {
+
+  let nameA = a[field].toUpperCase();
+  let nameB = b[field].toUpperCase();
+
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+
+  return 0;
 }
