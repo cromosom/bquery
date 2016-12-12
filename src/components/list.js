@@ -3,8 +3,8 @@ import ListItem from './listItem';
 
 const List = ({ data, items, pageIndex, sortBy }) => (
   <div>
-    <ul>
-      <li>
+    <ul className="package-list">
+      <li className="list-header">
         <div onClick={() => sortBy('name', data)}>Project,</div>
         <div onClick={() => sortBy('author', data)}>Owner,</div>
         <div onClick={() => sortBy('stars', data)}>Stars</div>

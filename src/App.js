@@ -7,6 +7,8 @@ import BowerList from './components/list';
 import Pagination from './components/pagination';
 import { chunkData } from './logic/dataOperations';
 
+import './index.css';
+
 // passes store data
 function storeProps(state) {
   return {
@@ -31,6 +33,7 @@ class App extends Component {
     sortData(data, sortParam);
   }
 
+  // handles filtering
   searchPackage (event, data) {
     event.preventDefault();
 
@@ -46,14 +49,17 @@ class App extends Component {
 
     return (
       <div className="App">
-        <form onSubmit={(ev) => this.searchPackage(ev, originalData)}>
-          <input id="queryField" />
-          <button type="submit">Get</button>
-        </form>
-        <button onClick={(ev) => this.getData(ev)}>Request Packages</button>
+        <header>
+          <button onClick={(ev) => this.getData(ev)}>Request Packages</button>
+
+          <form onSubmit={(ev) => this.searchPackage(ev, originalData)}>
+            <input id="queryField" />
+            <button type="submit">Search</button>
+          </form>
+        </header>
 
         {chunkedData[pageIndex] &&
-          <div>
+          <div className="content">
             <BowerList data={data} items={chunkedData} pageIndex={pageIndex} sortBy={this.sortBy} />
             <Pagination items={chunkedData} />
           </div>
