@@ -1,7 +1,7 @@
 
 export function getAuthor (item) {
   // set author
-  item.author = item.repository_url.match(/((git@|https:\/\/)([\w\.@]+)(\/|:))([\w,\-,_]+)\/([\w,\-,_]+)\//)[5];
+  item.author = item.repository_url.match(/((git@|https:\/\/)([\w\.@]+)(\/|:))([\w,\-,_]+)\/([\w,\-,_]+)/)[5];
 
   return item;
 }
