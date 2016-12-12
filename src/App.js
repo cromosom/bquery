@@ -35,7 +35,6 @@ class App extends Component {
 
   // handles filtering
   searchPackage (event, data) {
-    event.preventDefault();
 
     let query = document.getElementById('queryField').value;
     filterData(query, data);
@@ -50,11 +49,9 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <button onClick={(ev) => this.getData(ev)}>Request Packages</button>
-
-          <form onSubmit={(ev) => this.searchPackage(ev, originalData)}>
-            <input id="queryField" />
-            <button type="submit">Search</button>
+          <form onSubmit={ev => this.getData(ev)}>
+            <input onKeyUp={ev => this.searchPackage(ev, originalData)} id="queryField" />
+            <button type="submit">Request Packages</button>
           </form>
         </header>
 
