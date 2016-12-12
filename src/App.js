@@ -40,6 +40,10 @@ class App extends Component {
     filterData(query, data);
   }
 
+  componentDidMount () {
+    document.getElementById('queryField').focus();
+  }
+
   render() {
 
     const { data, pageIndex, originalData } = this.props;
@@ -49,9 +53,9 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <form onSubmit={ev => this.getData(ev)}>
-            <input onKeyUp={ev => this.searchPackage(ev, originalData)} id="queryField" />
-            <button type="submit">Request Packages</button>
+          <form className="form" onSubmit={ev => this.getData(ev)}>
+            <input className="search-field" onKeyUp={ev => this.searchPackage(ev, originalData)} id="queryField" placeholder="Search Name..." />
+            <button className="req-button" type="submit">Request Packages</button>
           </form>
         </header>
 
