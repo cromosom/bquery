@@ -61,7 +61,7 @@ class App extends Component {
         {chunkedData[pageIndex] &&
           <div className="content">
             <BowerList data={data} items={chunkedData} pageIndex={pageIndex} sortBy={this.sortBy} />
-            <Pagination items={chunkedData} />
+            <Pagination items={chunkedData} pageIndex={pageIndex} />
           </div>
         }
       </div>

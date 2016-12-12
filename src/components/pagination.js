@@ -8,12 +8,12 @@ class Pagination extends Component {
   }
 
   render () {
-    const items = this.props.items;
+    const { items, pageIndex } = this.props;
 
     return (
-      <div>
+      <div className="pagination">
         {items.map( (chunk, index) => (
-          <span onClick={() => this.passIndex(index)} key={index} >{index + 1}</span>
+          <span className={pageIndex === index ? 'is--active' : ''} onClick={() => this.passIndex(index)} key={index} >{index + 1}</span>
         ))}
       </div>
     )
