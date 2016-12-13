@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { fetchData } from './actions/receiver';
 import { sortData } from './actions/sort';
 import { filterData } from './actions/filter';
+import { setPage } from './actions/paginate';
 import { connect } from 'react-redux';
 import BowerList from './components/list';
 import Pagination from './components/pagination';
@@ -38,6 +39,7 @@ class App extends Component {
 
   // handles filtering
   searchPackage (event, data) {
+    setPage(0);
 
     let query = document.getElementById('queryField').value;
     filterData(query, data);
@@ -61,7 +63,7 @@ class App extends Component {
             <h1>BQuery</h1>
 
             <form className="form" onSubmit={ev => this.getData(ev)}>
-              <input className="search-field" onKeyUp={ev => this.searchPackage(ev, originalData)} id="queryField" placeholder="Search Name..." />
+              <input className="search-field" onInput={ev => this.searchPackage(ev, originalData)} id="queryField" placeholder="Search Name..." />
               <button className="req-button" type="submit">Request Packages</button>
             </form>
           </div>
