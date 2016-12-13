@@ -24,7 +24,10 @@ class App extends Component {
   getData(event) {
     event.preventDefault();
 
+    let spinner = document.getElementById('spinner');
     let query = document.getElementById('queryField').value;
+
+    spinner.classList.add('is--active');
     fetchData(query);
   }
 
@@ -52,11 +55,16 @@ class App extends Component {
 
     return (
       <div className="App">
+
         <header>
-          <form className="form" onSubmit={ev => this.getData(ev)}>
-            <input className="search-field" onKeyUp={ev => this.searchPackage(ev, originalData)} id="queryField" placeholder="Search Name..." />
-            <button className="req-button" type="submit">Request Packages</button>
-          </form>
+          <div className="header-content">
+            <h1>BQuery</h1>
+
+            <form className="form" onSubmit={ev => this.getData(ev)}>
+              <input className="search-field" onKeyUp={ev => this.searchPackage(ev, originalData)} id="queryField" placeholder="Search Name..." />
+              <button className="req-button" type="submit">Request Packages</button>
+            </form>
+          </div>
         </header>
 
         {chunkedData[pageIndex] &&
@@ -65,6 +73,11 @@ class App extends Component {
             <Pagination items={chunkedData} pageIndex={pageIndex} />
           </div>
         }
+
+        <div className="spinner" id="spinner">
+          <div className="top"></div>
+          <div className="bottom"></div>
+        </div>
       </div>
     );
   }

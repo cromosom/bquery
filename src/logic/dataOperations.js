@@ -1,4 +1,8 @@
-
+/**
+ * extracts project author form git url
+ * @param  {object} item package-object
+ * @return {object}      package-object with author
+ */
 export function getAuthor (item) {
   // set author
   item.author = item.repository_url.match(/((git|https:\/\/)([\w\.@]+)(\/|:))([\w,\-,_]+)\/([\w,\-,_]+)/)[5];
@@ -6,6 +10,11 @@ export function getAuthor (item) {
   return item;
 }
 
+/**
+ * splits data into array-chungs of 5 objects
+ * @param  {array} dataSet
+ * @return {array}
+ */
 export function chunkData (dataSet) {
   let chunks = [];
   let chunkSize = 5;
@@ -17,6 +26,12 @@ export function chunkData (dataSet) {
   return chunks;
 }
 
+/**
+ * sorts data alphabetical or numerical
+ * @param  {array} data
+ * @param  {string} field expects 'name', 'author' or 'stars'
+ * @return {array}
+ */
 export function sort (data, field) {
 
   let sorted;
@@ -31,6 +46,13 @@ export function sort (data, field) {
 
 }
 
+/**
+ * compares numerical values
+ * @param  {string} field
+ * @param  {number} a
+ * @param  {number} b
+ * @return {number}
+ */
 export function compareValues (field, a, b) {
   if (a[field] > b[field]) {
     return -1;
@@ -42,6 +64,13 @@ export function compareValues (field, a, b) {
   return 0;
 }
 
+/**
+ * compares strings
+ * @param  {string} field
+ * @param  {string} a
+ * @param  {string} b
+ * @return {number}
+ */
 export function compareStrings (field, a, b) {
 
   let nameA = a[field].toUpperCase();
@@ -57,6 +86,12 @@ export function compareStrings (field, a, b) {
   return 0;
 }
 
+/**
+ * filters data array
+ * @param  {string} query  string to filter for
+ * @param  {array} dataSet
+ * @return {array}         filtered array
+ */
 export function filter (query, dataSet) {
 
   let filteredData = dataSet.filter((item) => (

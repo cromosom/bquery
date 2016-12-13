@@ -1,6 +1,7 @@
 {
   "name": "bquery",
   "version": "0.1.0",
+  "author": "Tim Woldt",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.7.0"
