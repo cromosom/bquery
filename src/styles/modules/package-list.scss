@@ -1,0 +1,36 @@
+.package-list {
+  padding: 0;
+
+  .package-list__item {
+    display: flex;
+    align-items: center;
+    height: 8vh;
+    padding: 15px 0;
+    border-bottom: 1px solid #EDEDED;
+    box-shadow: 0 10px 10px -8px #EDEDED;
+
+    > div {
+      flex: 1;
+      margin-right: 10px;
+    }
+  }
+
+  .package-list__header {
+    @extend .package-list__item;
+    cursor: pointer;
+    height: auto;
+    padding: 10px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  // span {
+  //   margin-right: 10px;
+  //   cursor: pointer;
+  //
+  //   &.is--active {
+  //     font-weight: bold;
+  //   }
+  // }
+
+}

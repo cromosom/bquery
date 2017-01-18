@@ -8,8 +8,6 @@ import BowerList from './components/list';
 import Pagination from './components/pagination';
 import { chunkData } from './logic/dataOperations';
 
-import './index.css';
-
 // passes store data
 function storeProps(state) {
   return {
@@ -56,15 +54,15 @@ class App extends Component {
     let chunkedData = chunkData(data);
 
     return (
-      <div className="App">
+      <div className="main-container">
 
         <header>
           <div className="header-content">
             <h1>BQuery</h1>
 
             <form className="form" onSubmit={ev => this.getData(ev)}>
-              <input className="search-field" onInput={ev => this.searchPackage(ev, originalData)} id="queryField" placeholder="Search Name..." />
-              <button className="req-button" type="submit">Request Packages</button>
+              <input type="text" className="search-field" onInput={ev => this.searchPackage(ev, originalData)} id="queryField" placeholder="Search Name..." />
+              <button className="btn" type="submit">Request Packages</button>
             </form>
           </div>
         </header>

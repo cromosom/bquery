@@ -1,0 +1,21 @@
+
+//primary btn
+.btn {
+  outline: 0;
+  background: transparent;
+  border: 2px solid #000;
+  height: 37px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+//browser prefix
+.btn::-moz-focus-inner {
+  border: 0;
+}
